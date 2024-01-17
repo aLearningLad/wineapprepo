@@ -15,9 +15,7 @@ const CreateNew = () => {
   const [wineVarietal, setWineVarietal] = useState<string>("Durif");
   const [wineRating, setWineRating] = useState<number>(4.8);
   const [wineConsumed, setWineConsumed] = useState<boolean>(true);
-  const [wineDateConsumed, setWineDateConsumed] = useState<string>(
-    "2022-07-22T00:00:00.000Z"
-  );
+  const [wineDateConsumed, setWineDateConsumed] = useState<null>();
   const [region, setRegion] = useState<string>("Bordeaux, France");
   const [wineStyle, setWineStyle] = useState<string>("Full-bodied");
   const [foodPairings, setFoodPairings] = useState<string>("Grilled meats");
@@ -37,9 +35,20 @@ const CreateNew = () => {
     setWineName(e.target.value);
   };
   // HANDLE YEAR
-  const handleYearChange = (e: ChangeEvent<HTMLInputElement> | any) => {
+  //   const handleYearChange = (e: ChangeEvent<HTMLInputElement> | any) => {
+  //     e.preventDefault();
+  //     setWineYear(e.target.value);
+  //   };
+  const handleYearChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setWineYear(e.target.value);
+
+    const inputValue: string = e.target.value;
+
+    const numericValue: number = parseInt(inputValue, 10);
+
+    if (!isNaN(numericValue)) {
+      setWineYear(numericValue);
+    }
   };
 
   //HANDLE WINE TYPE
@@ -151,7 +160,7 @@ const CreateNew = () => {
       if (response.ok) {
         toast.success(`Adding ${wineName} ${wineYear} to your wines...`);
         const data = await response.json();
-        console.log("Wine added successfully:", data);
+        // console.log("Wine added successfully:", data);
       } else {
         console.log("Failed to add wine:", response.statusText);
       }
@@ -200,8 +209,8 @@ const CreateNew = () => {
             <option value={wineType}>{wineType}</option>
             <option value="Red">Red</option>
             <option value="White">White</option>
-            <option value="Rosé">Rosé</option>
-            <option value="White Blend">White Blend</option>
+            <option value="Rose">Rosé</option>
+            <option value="WhiteBlend">White Blend</option>
             <option value="Red Blend">Red Blend</option>
           </select>{" "}
         </div>

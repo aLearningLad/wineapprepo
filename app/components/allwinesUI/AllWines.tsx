@@ -1,3 +1,4 @@
+import { Idbwinecard } from "@/types";
 import { Navbar } from "../sharedui";
 import DBWineCard from "./DBWineCard";
 import prisma from "@/lib/prisma";
@@ -20,9 +21,8 @@ const AllWines = async () => {
       </header>
 
       <div className="w-full overflow-auto gap-3 md:gap-5 lg:gap-14 h-[90vh] p-0 md:p-2 lg:p-5 lg:bg-neutral-700/30 rounded-lg lg:rounded-2xl grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-        {wines.map((card) => (
+        {wines.map((card: Idbwinecard) => (
           <DBWineCard
-            key={card.id}
             key={card.id}
             alcoholcontent={card.alcoholcontent}
             bottlesize={card.bottlesize}
