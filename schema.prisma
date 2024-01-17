@@ -1,0 +1,56 @@
+//schema.prisma
+
+generator client {
+    provider = "prisma-client-js"
+    previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+    provider = "postgresql"
+    url = env("POSTGRES_PRISMA_URL")
+    directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Wine {
+  id             Int      @id @default(autoincrement())
+  name           String
+  year           Int
+  type           WineType
+  varietal       WineVarietal
+  rating         Float?
+  consumed       Boolean?
+  dateConsumed   DateTime?
+  region         String?
+  winestyle      String?
+  foodpairings   String?
+  winecolor      String?
+  bottlesize     Int
+  tastingNotes   String?
+  oakaging       Boolean
+  alcoholContent Float
+
+  vintner        String?
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+enum WineType {
+  Red
+  White
+  Rose
+  WhiteBlend
+  RedBlend
+}
+
+enum WineVarietal {
+  CabernetSauvignon
+  Merlot
+  Shiraz
+  CheninBlanc
+  SauvignonBlanc
+  Verdelho
+  Chardonnay
+  Durif
+ 
+}
