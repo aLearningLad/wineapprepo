@@ -53,3 +53,8 @@ export type Idbwinecard = {
   alcoholcontent: string;
   vintner: string;
 };
+
+export type Imobilenavlinks = {
+  title: string;
+  link: string;
+};

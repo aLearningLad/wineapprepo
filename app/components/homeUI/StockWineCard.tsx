@@ -17,7 +17,7 @@ const StockWineCard: React.FC<Istockwines> = ({
   title,
 }) => {
   return (
-    <div className="w-full hover:scale-90 transition duration-500 ease-in-out rounded-xl relative md:rounded-3xl flex flex-col items-center justify-end overflow-clip p-3 md:py-5 h-[80vh]">
+    <div className="w-full hover:scale-90 transition duration-500 ease-in-out rounded-xl relative md:rounded-3xl flex flex-col items-center justify-end overflow-clip p-3 md:py-5 h-[50vh] md:h-[40vh] lg:h-[80vh]">
       <div className="absolute z-10 flex justify-center items-center right-[10%] top-[10%] w-[200px] h-[200px] rounded-full border-[8px] border-white bg-black pb-3 ">
         <Image src={img} width={36} height={40} alt="wineImg" className="" />
       </div>
