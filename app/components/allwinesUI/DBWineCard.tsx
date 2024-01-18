@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DeleteBtn } from "../sharedui";
 
 interface DBWineCardProps {
   id: number;
@@ -40,7 +41,7 @@ const DBWineCard: React.FC<DBWineCardProps> = ({
   year,
 }) => {
   return (
-    <div className="w-full relative h-[70vh] bg-white items-center flex flex-col rounded-md md:rounded-lg lg:rounded-xl p-3 md:p-5">
+    <div className="w-full relative h-[70vh] bg-white items-center justify-center flex flex-col rounded-md md:rounded-lg lg:rounded-xl p-3 md:p-5">
       <h3 className=" text-xl font-semibold">{name}</h3>
       <p>Type: {type}</p>
       <p>Year:{year}</p>
@@ -61,12 +62,15 @@ const DBWineCard: React.FC<DBWineCardProps> = ({
       <p>Concentration: {alcoholcontent}</p>
       <p>Rated {rating}/5</p>
 
-      <Link
-        className="flex absolute bottom-3 justify-center w-10/12 py-2 bg-black text-white rounded-lg"
-        href={`/edit-wine/${id}`}
-      >
-        Edit {name}
-      </Link>
+      <div className="absolute bottom-3 flex w-full gap-3 px-2">
+        <Link
+          className="flex justify-center w-1/2 py-2 bg-black text-white rounded-lg"
+          href={`/edit-wine/${id}`}
+        >
+          Edit {name}
+        </Link>
+        <DeleteBtn id={id} name={name} />
+      </div>
     </div>
   );
 };
